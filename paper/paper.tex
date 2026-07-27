@@ -1,0 +1,887 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs, threeparttable}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage[round]{natbib}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, citecolor=blue, linkcolor=blue, urlcolor=blue}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\texttt{doi:#1}}}
+\onehalfspacing
+
+\title{\Large\bfseries Reconstruction Without Reallocation:\\
+How Did Chilean Manufacturing Capital Adjust\\
+After the 2010 Maule Earthquake Shock?}
+\author{Sitong Liu\thanks{Undergraduate Honors Program in Economics, New York University.
+This is an independent research project. I thank \dots\ All errors are my own.}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent In February 2010, Chile was struck by the Maule earthquake, which measured 8.8 on the
+moment magnitude scale and dealt a severe blow to the local manufacturing sector. This paper
+treats the Maule earthquake as an exogenous shock to Chile's manufacturing sector to examine how
+the sector recovered in the aftermath of the earthquake, whether this recovery spilled over into
+the labor market, and whether the recovery had heterogeneous effects on unskilled and skilled
+workers. I address this question using a difference-in-differences design across industries and
+regions. The results show that, among the variables examined---output, employment, labor
+productivity, the labor share of output, proxy measures of profits, and investment---only
+investment responded to capital reconstruction, while no significant changes were observed in the
+other indicators. However, since the severely affected central urban regions already had higher
+investment levels than other areas prior to the disaster, I interpret this evidence as suggestive
+rather than conclusive. The paper primarily demonstrates that reconstruction restored the capital
+stock but did not alter the scale of production or the allocation of resources.
+
+\medskip
+\noindent \textbf{Keywords:} natural disasters, capital-skill complementarity, labor markets,
+Chile. \quad \textbf{JEL:} J23, J31, Q54, O14, R11.
+\end{abstract}
+
+\thispagestyle{empty}
+\clearpage
+\setcounter{page}{1}
+
+\section{Introduction}\label{sec:intro}
+
+In the early hours of February 27, 2010, the 8.8-magnitude Maule earthquake struck Chile. It was
+the sixth-largest earthquake in recorded history and the second strongest in Chile's history
+\citep{barcena2010}. More than 100 aftershocks with magnitudes of 5.0 or higher followed. Over
+1.8 million people were affected, infrastructure across the country suffered severe damage, and
+economic losses reached \$30 billion, accounting for approximately 18\% of Chile's GDP
+\citep{barcena2010}. The three hardest-hit regions, Maule, B\'io-B\'io, and O'Higgins, constitute
+the heartland of Chile's manufacturing sector. Together, these regions account for more than a
+quarter of Chile's manufacturing output, spanning industries such as food processing, beverages,
+steel, paper, shipbuilding, and oil refining, while also contributing approximately half of the
+country's agricultural and forestry output \citep{barcena2010}. According to a study using
+synthetic control methods, economic activity in the Maule Region declined by approximately 5\%
+compared to a counterfactual scenario in the three years following the earthquake
+\citep{diaz2024}. Figure~\ref{fig:map} shows the distribution of seismic intensity.
+
+As can be seen, this earthquake was plausibly exogenous to the industrial and labor markets; it
+had a massive impact, and the intensity of ground shaking it generated attenuated with distance
+from the epicenter and varied with local soil conditions. Therefore, after controlling for fixed
+effects, the intensity of shaking is plausibly uncorrelated with a region's pre-existing
+manufacturing and labor-market trends. I can thus attempt to answer the following question: How
+does a labor market adjust when an economy suddenly loses a large amount of physical capital
+overnight due to an exogenous disaster? \citet{krusell2000} proposed the ``capital-skill
+complementarity (CSC)'' hypothesis to explain the relationship between equipment capital and the
+labor market: equipment capital and skilled labor are complementary in production. I can thus
+propose the initial hypothesis that, after an earthquake destroys most of the local physical
+capital, the local economy will require more skilled workers to rebuild capital, thereby driving
+up wages for skilled workers.
+
+To test whether this theory applies to this earthquake disaster, I aggregate establishment-level
+data into industry $\times$ region $\times$ year cells and construct a difference-in-differences
+specification with an interaction term between the time indicator variable (post-2010) and
+continuous regional MMI values. The industry $\times$ region fixed effects capture the
+time-invariant characteristics of each cell, including MMI levels; the industry $\times$ year
+fixed effects capture any nationwide industry-specific shocks, such as changes in copper prices,
+global demand for processed foods, and the national business cycle. Thus, I compare establishments
+across regions within the same industry and year that were affected by the earthquake to varying
+degrees.
+
+Reconstruction unfolds over several years rather than instantaneously. The immediate aftermath is
+dominated by relief, damage assessment, and financing rather than rebuilding, so the investment
+response should appear with a delay, peaking in 2014--2015 rather than at the moment of the quake.
+Consistent with a slow recovery, \citet{diaz2024} find that Chilean per-capita GDP remained
+roughly 5\% below its counterfactual for years after the earthquake. This motivates the central
+question of the paper: during reconstruction, how did the manufacturing labor market adjust,
+through capital, through workers, or through wages?
+
+The paper makes three points in response to the above questions.
+
+\textbf{(1) A reconstruction-investment pulse.} Areas that were more severely affected by the
+earthquake saw an increase in total investment following the disaster, peaking in 2014 before
+declining. For every one-unit increase in a region's MMI, the post-earthquake peak investment in
+that region rose by approximately 0.58 log points. This estimate withstood a wild cluster
+bootstrap and a series of robustness tests. However, it was found to be sensitive to the faster
+pre-earthquake investment growth trend in affected regions.
+
+\textbf{(2) Reconstruction occurred after the earthquake, but the allocation of resources did not
+change.} Investment was the only variable to show a significant change post-earthquake. I did not
+observe significant changes in other variables such as output, employment, labor productivity, the
+labor share of output, or proxy indicators of corporate profits (see Table~\ref{tab:incidence}).
+Therefore, this suggests that reconstruction merely replaced capital destroyed by the earthquake
+rather than adding new productive capacity, and thus did not alter the allocation structure between
+capital and labor. This conclusion is consistent with the fact that Chile's value added remained
+below its counterfactual path several years later \citep{diaz2024}. This is the key finding of the
+paper and the fundamental reason why the effects of post-earthquake reconstruction did not spill
+over into the labor market.
+
+\textbf{(3) The expected ``capital-skill complementarity'' theory has not been confirmed.} If
+reconstructed capital and skilled labor were complementary, the post-disaster skill premium should
+have risen; however, this pattern did not materialize following the Chilean earthquake. Yet my aim
+is not to refute this theory, as the available data and the reduced-form regression I employ do not
+solely examine the impact of equipment on the skill premium; they also account for the effects of
+variables such as structures, labor, and output---all of which were similarly affected by the
+earthquake---on the skill premium. Furthermore, the wage evidence is not sufficiently robust. I
+find a weak and imprecise upward trend in unskilled wages following the disaster. A candidate
+mechanism is that local reconstruction of destroyed buildings and infrastructure after the disaster
+led to increased employment in the construction sector. I therefore used household data to test
+this hypothesis but found no significant results.
+
+\textbf{Pre-trends and the identification strategy.} When I regressed the various outcomes on
+``post-earthquake $\times$ regional intensity,'' I found that the hardest-hit areas were precisely
+Chile's industrial heartland (Santiago, Maule, and B\'io-B\'io), which had already been experiencing
+faster investment growth than outlying regions prior to the earthquake. To address this issue, I
+recovered the ENIA files with establishment identifiers from before 2008 and extended the
+pre-earthquake period back to 2003 to capture regional trends. I then incorporated region-specific
+trends estimated solely within the pre-earthquake window. Even so, this study cannot completely
+disentangle pre-earthquake investment growth from post-earthquake investment effects, so the
+conclusions presented here are tentative.
+
+\textbf{Related literature.} In the economics of natural disasters, a significant body of research
+focuses on regional output following major shocks, as well as how populations adapt and recover
+\citep{aksoy2024,diaz2024,benguria2022}, while a smaller body of research examines labor market
+conditions in affected regions. The study most closely aligned with this paper is
+\citet{belasen2009}, who found that hurricanes in Florida increased local income but reduced
+employment. Building on these studies, this paper also examines how manufacturing establishments
+adjust their total investment, asset mix, and occupational composition following a disaster.
+
+Second, some studies have used capital cost shocks to investigate the extent to which such shocks
+are passed on to workers \citep{suarezzidar2016,fuest2018}, while \citet{notowidigdo2020} examined
+how changes in local labor demand affect skill groups differently. I adopt a similar logic, but
+with fundamental differences from previous studies, which also lead to different results. The
+shocks in this paper involve physical destruction, such as damage to factory machinery, buildings,
+and infrastructure, rather than changes in tax rates or the cost of capital. Furthermore, I find
+that the physical destruction caused by earthquakes is rarely passed on to workers; even when it
+is, the pass-through is not significant.
+
+Third, this paper provides an empirical case study of ``capital-skill complementarity.'' The
+capital-skill complementarity theory proposed by \citet{krusell2000} emphasizes that capital
+equipment increases the relative demand for skilled labor; meanwhile, \citet{lewis2011} argues that
+the local labor supply, in turn, shapes an establishment's choice of equipment. The Chilean
+earthquake provides an empirical case: in the aftermath of the disaster, local manufacturers
+increased investment in equipment to restore the economy, yet the skill premium did not rise.
+However, this conclusion is based on the results of a reduced-form regression and is not entirely
+robust. Therefore, it is insufficient to refute the validity of Krusell's theory in this specific
+case.
+
+Finally, this paper draws on the pre-trends approach of \citet{roth2022} to address the issue that
+the hardest-hit regions already experienced faster investment growth prior to the disaster.
+Section~\ref{sec:framework} presents the concepts and theories discussed in this paper;
+Section~\ref{sec:data} introduces the data; Section~\ref{sec:strategy} outlines the empirical
+strategy; Sections~\ref{sec:results}--\ref{sec:mechanism} present the results and mechanisms;
+Sections~\ref{sec:migration}--\ref{sec:honest} demonstrate the exclusion of the out-migration
+channel and the treatment of parallel trends; Section~\ref{sec:discussion} discusses the effects
+and external validity; and Section~\ref{sec:conclusion} concludes the paper.
+
+\begin{figure}[htbp]\centering
+  \includegraphics[width=0.5\linewidth]{../output/figs/E2_chile_mmi_map_zoom.png}
+  \caption{Ground-shaking intensity (MMI) of the 2010 Maule earthquake by region; the red star
+  marks the offshore epicenter. Central regions were severely shaken; the far north and south
+  were essentially unaffected.}
+  \label{fig:map}
+\end{figure}
+
+\FloatBarrier
+\section{Conceptual Framework}\label{sec:framework}
+
+According to the capital-skill complementarity theory proposed by \citet{krusell2000}, let $k_s$
+denote structures (buildings used for production), $k_e$ denote equipment, $s$ denote skilled
+labor, and $u$ denote unskilled labor. The complementarity between equipment and skilled labor is
+stronger than that between equipment and unskilled labor:
+\begin{equation}
+Y = A\,k_s^{\alpha}\left[\mu\,u^{\sigma}+(1-\mu)\left(\lambda\,k_e^{\rho}+(1-\lambda)\,s^{\rho}\right)^{\sigma/\rho}\right]^{(1-\alpha)/\sigma}.
+\end{equation}
+
+$\rho$ measures the ease of substitution between equipment and skilled labor; the smaller it is,
+the harder it is for the two to substitute for one another. $\sigma$ measures the ease of
+substitution between equipment and unskilled labor; the larger it is, the easier it is for the two
+to substitute for one another. If $\sigma > \rho$, then equipment is harder to substitute for
+skilled labor than for unskilled labor. In other words, machines require highly skilled workers to
+operate them, but are less selective when it comes to unskilled workers.
+
+We can therefore conclude that the relative marginal product of skilled labor rises as the stock of
+equipment increases; consequently, the skill premium $\omega = w_s/w_u$ will rise as the amount of
+equipment allocated to skilled workers increases:
+\begin{equation}
+\frac{\partial \ln\omega}{\partial \ln k_e}>0 \qquad\text{iff}\qquad \sigma>\rho.
+\end{equation}
+
+Equation (2) provides a standard prediction: if equipment stock increases, the wage premium of
+skilled labor relative to unskilled labor will increase accordingly. Since plant capital is treated
+as a separable Cobb-Douglas factor within Equation (1), it does not carry this implication, which
+is consistent with the ``capital-specificity'' noted by Krusell et al.
+
+This baseline formula overlooks a key feature of post-disaster reconstruction. Reconstruction itself
+constitutes a form of production activity, involving labor-intensive manual and construction work,
+such as demolition, site clearance, and the installation and construction of new facilities and
+equipment, which relies heavily on unskilled workers. Therefore, when severely affected regions
+rely more heavily on post-disaster facility reconstruction, they have a greater need for unskilled
+workers, leading to an outward shift in the demand for unskilled labor, where $\Delta\ln u^{d} > 0$.
+However, the supply of unskilled labor is not infinitely elastic; this rise in demand will push
+$w_u$ upward, causing the skill premium we obtain to be underestimated, because of the opposite of
+the direction of effect in Equation (2). Consequently, the net effect on $\omega$ is theoretically
+uncertain:
+\begin{equation}
+\underbrace{\frac{\partial \ln\omega}{\partial \ln k_e}}_{>0\ (\text{CSC})}\qquad\text{vs.}\qquad
+\underbrace{-\,\frac{\partial \ln\omega}{\partial \ln u^{d}}}_{<0\ (\text{reconstruction demand})}.
+\end{equation}
+
+This framework raises two empirical questions that this paper seeks to address: H1 (Investment):
+Does the shock increase investment in the affected region? H2 (Allocation): Where does this
+investment manifest itself---in output, employment, factor allocation, or skill premiums? Equation
+(2) provides an expectation that this investment will ultimately manifest itself in rising skill
+premiums. However, Equation (3) casts doubt on this expectation. Because the shock simultaneously
+alters $k_e$, $k_s$, $u^{d}$, and output, the reduced-form regression performed in this paper
+captures the net effect of $k_e$, $k_s$, $u^{d}$, and output as a whole, rather than a pure,
+isolated $\partial\ln\omega/\partial\ln k_e$. The data confirm H1, but the result for H2 is that
+the investment is not reflected in the actual marginal rate of return nor in factor allocation.
+Therefore, I argue that post-earthquake reconstruction was limited to restoring destroyed capital
+and infrastructure, without altering the total volume of production or the pattern of allocation
+between labor and capital. The prediction of a skill premium was not confirmed, nor was it supported
+by existing data for a clean test.
+
+\FloatBarrier
+\section{Data}\label{sec:data}
+
+\subsection{Manufacturing microdata}
+The Annual National Industrial Survey (\textit{Encuesta Nacional Industrial Anual}, ENIA) is
+conducted annually by the Chilean National Institute of Statistics (INE). The survey covers
+manufacturing establishments with ten or more employees. I use survey data from 2003 to 2017,
+excluding 2012 because the response rate from establishments was unusually low that year. Each
+survey includes data reported by establishments on employment, wages and salaries by occupational
+category, gross production value (\textit{valor bruto de la producci\'on}, VBP), intermediate
+consumption, taxes, and fixed-asset acquisitions and book values by asset category.
+Appendix~\ref{app:data} details the data processing procedures.
+
+Three points warrant emphasis. First, public-use files from 2008 onward lack stable establishment
+identifiers, so establishment-level data is unavailable; I can only analyze industry-region-year
+cells. Additionally, the files I reconstructed for the period prior to 2008 contain stable
+identifiers (NUI), which can be used to extend the data to the pre-earthquake period. Second, ENIA
+does not directly survey capital stock; therefore, the data do not directly reflect how much capital
+was destroyed by the earthquake or how much was replenished. Consequently, I directly use annual
+acquisition expenditures as an indicator of capital formation. I categorize these expenditures into
+structures (land and buildings), machinery, and a broad equipment measure (machinery, vehicles, and
+software). Third, starting in 2013, the industrial classification standard used in the statistics
+changed from ISIC Rev.\ 3 to Rev.\ 4. I use the official UN concordance table to reconcile the coding
+differences between the two versions, prioritizing the UN standard and classifying industries with
+discrepancies based on their weights.
+
+\subsection{Skill, wages, and the limits of the employment data}
+To test the theory of ``capital-skill complementarity,'' I must first divide workers into two
+categories: skilled workers and unskilled workers. ENIA reports employment figures and wages by
+occupational category, so in theory, I could calculate the proportion of skilled workers based on
+the number of workers in each category across regions. However, ENIA's classification of these two
+categories is somewhat vague and does not provide a clear distinction between unskilled and skilled
+workers. Fortunately, the wage category is broken down into monthly wages of technical/professional
+workers and monthly wages of unskilled workers, so I use these two wage series to calculate the
+skill premium. The skill premium is defined as the log of the ratio of the monthly wages of
+technical/professional workers to the monthly wages of unskilled workers.
+
+\subsection{Earthquake intensity}
+I use the Modified Mercalli Intensity (MMI) calculated by the USGS ShakeMap \citep{usgs2011} to measure earthquake
+intensity. Unlike the magnitude of 8.8, which represents the total energy of the entire earthquake,
+the MMI indicates the actual intensity of shaking felt at a specific location. This allows me to
+distinguish between severely affected and lightly affected areas based on the intensity of the
+shaking. By overlaying the intensity contours from ShakeMap onto administrative district maps and
+then applying area-weighted averaging and an equal-area projection, I can calculate the average
+intensity for each administrative district. The average MMI across regions ranges from approximately
+2.9 (in the northern desert regions) to 6.7 (in Maule and O'Higgins). Areas that were virtually
+unaffected by the earthquake are assigned the lower-limit intensity of 2.0 and serve as the control
+group. To ensure consistency in regional coding across the data, I use the classification standard
+of the 15 major regions. Therefore, the \~Nuble region is still grouped under the B\'io-B\'io region.
+I treat continuous intensity as the main explanatory (treatment) variable and use a binary indicator
+variable for high intensity (MMI $\geq 6$) as a robustness test.
+
+\subsection{Sample and descriptive statistics}
+I aggregate the data into industry $\times$ region $\times$ year cells, calculate the weighted sum
+of aggregate economic indicators such as investment and employment, and compute the weighted average
+of wages. I select food products (ISIC 10), wood products (ISIC 16), and basic metals (ISIC 24) as
+the sample industries because these three sectors are widely distributed and have comparable levels
+of development across both low- and high-intensity regions, ensuring that the comparison between
+high- and low-intensity regions is not confounded by differences in industry composition. I report
+the results of the robustness check using the entire manufacturing sample.
+Table~\ref{tab:summary} presents the conditions in severely and lightly affected areas prior to the
+earthquake. The results indicate that the severely affected areas were substantially ahead of the
+lightly affected areas in terms of investment, employment, and output. This suggests that the most
+severely affected central regions were already the industrial heartland of Chile. Therefore, I
+suspect that the two groups of regions were likely already following different growth trajectories
+prior to the earthquake. This is why I estimate pre-earthquake trends and project them forward in
+Section~\ref{sec:strategy}, and test their robustness in Section~\ref{sec:honest}.
+
+\input{tables/tab_summary}
+
+\FloatBarrier
+\section{Empirical Strategy}\label{sec:strategy}
+
+\subsection{Specification}
+The baseline difference-in-differences specification is
+\begin{equation}
+y_{jrt} = \beta\,\big(\text{Post}_t \times \text{MMI}_r\big) + \gamma_{jr} + \delta_{jt} + \varepsilon_{jrt},
+\end{equation}
+where $j$ indexes 2-digit industry, $r$ region, and $t$ year; $\text{Post}_t = \mathbf{1}[t \geq 2010]$;
+$\text{MMI}_r$ is the region's area-weighted intensity; $\gamma_{jr}$ are industry $\times$ region
+fixed effects; and $\delta_{jt}$ are industry $\times$ year fixed effects. The industry $\times$
+region effects absorb the main effect of MMI and any time-invariant cell heterogeneity; the industry
+$\times$ year effects absorb any shock common to an industry nationwide each year. $\beta$ is the
+coefficient of interest: it captures the differential change in the outcome after 2010 associated
+with a one-unit-higher MMI in a region---that is, how much more the outcome moved after the earthquake
+in regions shaken one unit harder. I replace $\text{MMI}_r$ with a binary variable (indicating whether
+an area is severely affected) as a robustness check, and weight the cells by size, with standard errors
+clustered by region.
+
+\subsection{Identification, pre-trends, and detrending}
+However, Equation (4) is constrained by the parallel-trends assumption of the difference-in-differences
+method, which holds that if the earthquake had never occurred, development in regions with high MMI and
+low MMI would have followed parallel trends within each industry. Yet, with 2009 as the base year and
+2003--2009 as the pre-earthquake phase, this parallel-trends assumption is fragile in this case, as
+regions with high MMI already had higher levels of investment, employment, and output prior to the
+earthquake. Equation (5) is designed to test this assumption:
+\begin{equation}
+y_{jrt} = \sum_{k\neq 2009} \beta_k\,\big(\mathbf{1}[t=k] \times \text{MMI}_r\big) + \gamma_{jr} + \delta_{jt} + \varepsilon_{jrt}.
+\end{equation}
+To reduce the influence of these pre-existing trends, I estimate each region's trend over the
+pre-earthquake period (2003--2009), project it forward to construct a counterfactual path, and subtract
+this counterfactual from the actual data. Then I use the resulting residuals to estimate Equation (5).
+I also use the 2014 FUT tax reform as a placebo shock for a falsification test.
+
+\subsection{Inference with few clusters}
+Because there are only 15 regions, cluster-robust standard errors are downward biased and the asymptotic
+$t$-test over-rejects. For the headline coefficients I therefore also report restricted wild cluster
+bootstrap $p$-values (Rademacher weights, $B = 999$, the null imposed), following \citet{cameron2008}.
+
+\FloatBarrier
+\section{Results}\label{sec:results}
+
+\subsection{The reconstruction-investment pulse}
+Table~\ref{tab:main_did} reports the baseline coefficient from (4) for each outcome. Panel A, without
+region trends, shows large and significant effects on investment, gross output, and employment. Panel
+B adds region-specific linear trends: the investment coefficient falls from 0.52 to 0.17 and loses
+significance, and the output and employment effects disappear. Most of Panel A is the differential
+secular growth of the central regions, not the earthquake, and this result is exactly the concern
+raised by the long pre-period.
+
+\input{tables/tab_main_did}
+
+However, for a transient phenomenon, a single post-earthquake coefficient is not an appropriate
+measure, as it reduces the results to an average, preventing me from seeing how the results change over
+time. Therefore, I conducted an event study organized by year. Table~\ref{tab:event_study} and
+Figure~\ref{fig:eventstudy} present the results of the event study. Even during the long pre-earthquake
+period, the investment gap in high-MMI regions remained positive relative to the base year; therefore,
+the event study remains inconclusive and cannot be shown to strictly follow a parallel pre-event trend.
+However, it shows that during the reconstruction period, the divergence in investment gaps between
+severely and lightly affected areas became very large: the investment gap between high and low MMI
+areas rose to 0.58 in 2014 ($p < 0.01$) and to 0.60 in 2015 ($p < 0.05$), before falling back to near
+zero in 2016--2017.
+
+These changes track the institutional structure of the reconstruction. Chilean authorities adopted a
+four-year reconstruction plan, financed by temporarily raising corporate tax rates, increasing mining
+royalties, drawing on the sovereign wealth fund, and issuing new bonds \citep{govchile2010}. The
+Ministry of Housing and Urban Development (MINVU) committed to rebuilding or repairing 220,000 housing
+units over four years, but noted that the affected population and housing stock were geographically
+dispersed across rural areas and that land-ownership and technical constraints made rapid execution
+difficult. The immediate post-disaster priorities were therefore relief, assessment, subsidies, and
+approvals; manufacturing establishments recorded the acquisition and replacement of structures,
+machinery, vehicles, and software only once projects reached the implementation phase. The 2014--2015
+investment peak thus reflects the execution of reconstruction rather than an immediate response to the
+physical shock.
+
+The magnitude of the investment effect in 2014 depends on the method of trend removal: the effect is
+0.71 with no detrending, 0.40 with detrending applied to the entire sample, and I tend to use the
+figure of 0.58, which lies between the two and passed the bootstrap test for wild clustering
+($p=0.027$).
+
+Table~\ref{tab:robustness} shows that the 2014 coefficient is robust across alternative
+specifications---adding industry $\times$ region trends, restricting to a tight 2007--2017 window,
+dropping the Santiago Metropolitan Region, and using the full manufacturing sample, where it ranges
+from 0.56 to 0.88 and remains significant. Under a binary high-intensity (MMI $\geq 6$) treatment it is
+larger still (1.87) but also significant. This supports H1.
+
+\input{tables/tab_event_study}
+\input{tables/tab_robustness}
+
+\begin{figure}[htbp]\centering
+  \includegraphics[width=0.9\linewidth]{../output/figs/E5_event_study_pretrend.png}
+  \caption{Investment event study with region trends estimated on the pre-period (2003--2009) only
+  and projected forward. The 2014--2015 spike is substantially larger than the remaining pre-period
+  gaps and reverts thereafter.}
+  \label{fig:eventstudy}
+\end{figure}
+
+\FloatBarrier
+\subsection{Reconstruction without reallocation}
+Table~\ref{tab:incidence} addresses the question posed by H2: Where does the increase in investment
+manifest itself? The answer is: nowhere. I apply the same pre-period-projected detrending and regression
+to output, employment, labor productivity, the labor share of output, and the corporate-income-tax
+profit proxy. The results are all statistically indistinguishable from zero. In other words,
+reconstruction restored the destroyed capital but did not expand production, alter the level of
+employment or labor productivity, or change the distribution of income between labor and capital. I
+interpret this as ``replacement'': establishments rebuilt the capital destroyed by the earthquake,
+restoring it to its pre-earthquake level rather than expanding beyond the original level. This explains
+why the real and distributional margins remained unchanged, and why (consistent with \citealp{diaz2024})
+regional value added consistently fell short of the counterfactual path. The only exception is a slight
+increase in the wage bill ($+0.14$, $p < 0.05$). I analyze the possible mechanisms behind this wage
+increase in Sections~\ref{sec:mechanism} and~\ref{sec:migration}. These include positive spillover
+effects from the local construction industry and the out-migration of unskilled workers.
+
+\input{tables/tab_incidence}
+
+\FloatBarrier
+\subsection{The skill premium}
+Based on the capital-skill complementarity principle, one might expect that the reconstruction of
+infrastructure following an earthquake would be accompanied by a rise in the skill premium. However,
+Table~\ref{tab:labor} does not support this prediction: the premium effect is negative, averaging
+$-0.19$ log points per unit of MMI. The overall wage increase shown in Table~\ref{tab:incidence} stems
+primarily from a rise in unskilled wages, averaging $+0.26$ and peaking at $+0.52$ in 2014, while
+skilled wages remained stable. This approach has a limitation: it remains a reduced-form regression that
+captures the combined impact of equipment, structures, labor, and output on the skill premium in the
+wake of the earthquake, rather than the independent effect of any single factor.
+
+\input{tables/tab_labor}
+
+\FloatBarrier
+\section{Replacement, and the Missing Wage Mechanism}\label{sec:mechanism}
+
+This section primarily clarifies two points: First, the investment pulse following an earthquake
+represents a replacement of destroyed capital rather than further growth from the original level.
+Second, my analysis using household data reveals that the conclusion regarding an upward shift in
+unskilled wages is fragile. Taken together, these two points indicate that investment is linked to the
+demand for post-disaster reconstruction, rather than to a capital-driven shift in labor demand.
+
+\textbf{Investment represents a replacement.} Table~\ref{tab:mechanism} examines the asset classes to
+which the increase in investment in 2014 was allocated: structures accounted for the largest share
+($+0.82$), while machinery ($+0.49$) and broad equipment ($+0.52$) also saw significant increases (see
+Figure~\ref{fig:asset}). Panel B shows that the equipment coefficient was 0.34 higher than its
+pre-period trend during both the 2010--2014 and 2015--2017 periods, while the structures coefficient
+was lower in the latter period. Therefore, this table serves as key evidence supporting the paper's
+argument: reconstruction covered structures and equipment, but did not affect the distribution of
+output, employment, or skills, primarily because reconstruction merely restored the capital base rather
+than expanding or developing it beyond its original level.
+
+\input{tables/tab_mechanism}
+
+\begin{figure}[htbp]\centering
+  \includegraphics[width=0.9\linewidth]{../output/figs/E8_asset_decomposition.png}
+  \caption{Reconstruction investment pulse by asset class. Both structures and equipment rise
+  significantly; the null on skill is therefore not due to an absence of equipment investment.}
+  \label{fig:asset}
+\end{figure}
+
+\FloatBarrier
+\textbf{The rise in unskilled wages did not originate in the construction industry.} As shown in
+Figure~\ref{fig:wagedecomp}, the only labor-side variable that changed was unskilled wages, which gradually
+increased and peaked alongside investment in 2014, while skilled wages remained stable. One plausible
+mechanism is the spillover effect from the local labor market: following the disaster, there was a
+greater need for unskilled labor to rebuild infrastructure and factories. Consequently, the
+construction boom in the hardest-hit areas would have stimulated wages for local unskilled workers,
+forcing manufacturing plants to follow suit with wage increases. I directly tested this hypothesis
+using household survey data and found that, in the more severely affected regions, post-earthquake
+employment in the construction sector did not increase ($+0.02$, $p=0.36$), nor did construction wages
+rise. On the contrary, they declined ($-0.04$, $p=0.09$). The event study also revealed no break at the
+time of the earthquake. At the same time, I found that the rise in unskilled wages stemmed primarily
+from the food industry, rather than the wood products or basic metals industries, the two sectors
+closely related to construction. The conclusions are presented in Table~\ref{tab:wage_mechanism_checks}.
+
+\input{tables/tab_wage_mechanism_checks}
+
+\begin{figure}[htbp]\centering
+  \includegraphics[width=0.9\linewidth]{../output/figs/E9_wage_decomposition.png}
+  \caption{Decomposing the skill-premium decline: the unskilled wage rises and peaks in 2014, in
+  lockstep with the investment pulse, while the skilled wage is flat.}
+  \label{fig:wagedecomp}
+\end{figure}
+
+\FloatBarrier
+There are three potential limitations to note. First, the classification criteria for skilled and
+unskilled workers in the original data are relatively crude. Second, the skill premium reflects both
+labor demand and labor supply: when demand for unskilled labor rises, wages for unskilled workers
+increase, and, all else being equal, the skill premium declines. When the supply of unskilled labor
+increases (i.e., if more unskilled workers enter the disaster-affected area), wages for unskilled
+workers fall, and the skill premium rises. Conversely, if the earthquake causes workers to become
+displaced and leave the severely affected areas, the net effect on the skill premium is ambiguous. The
+key lies in the post-earthquake mobility of these two categories of workers---specifically, whether they
+left the severely affected areas. I discuss this point in Section~\ref{sec:migration}. Third, this paper
+draws inferences based solely on data from 15 regions, and this is the primary reason I employed the
+bootstrapping method.
+
+\FloatBarrier
+\section{The Out-Migration Channel}\label{sec:migration}
+
+There is another possible mechanism to explain why unskilled wages rise: the out-migration effect. If
+unskilled workers leave the hardest-hit areas, the local supply of unskilled labor contracts, causing
+unskilled wages to rise. However, this mechanism is unrelated to reconstruction. The out-migration
+effect and the reconstruction mechanism mentioned earlier appear to have the same directional impact on
+wages, while their difference lies in the number of workers: if the rise in unskilled wages is primarily
+due to reconstruction, the number of unskilled workers will increase. If it is caused by the
+out-migration effect, the number will decrease.
+
+ENIA cannot address this issue because it stopped collecting statistics broken down by skill level after
+2007. Therefore, I use another dataset here: the National Socioeconomic Characterization Survey (CASEN).
+CASEN records region, educational attainment, and population expansion weights, allowing me to calculate
+the stock of skilled and unskilled workers in each region before and after the earthquake. CASEN survey
+data is only available for 2003, 2006, 2009, 2011, 2013, 2015, and 2017, with a lower frequency of data
+collection than ENIA. Therefore, I primarily use it for robustness checks. I adopt the same
+specifications as in the main analysis ($\text{Post} = \mathbf{1}[t\geq 2010]$, where the 2009 wave is
+classified as pre-earthquake) and divide regions into the 13 major regions as defined prior to 2007.
+Skill levels are still categorized by educational attainment: unskilled workers have a basic education
+or lower, while skilled workers have a higher education background.
+
+Table~\ref{tab:casen} and Figure~\ref{fig:casen} present the results, which support the demand-side
+interpretation. The working-age unskilled population in severely affected areas did not decline after
+the earthquake: the $\text{Post} \times \text{MMI}$ coefficient was $+0.002$, which is statistically
+indistinguishable from zero. Between 2003 and 2017, the unskilled population in areas with high MMI
+maintained a small positive difference, and no breakpoint occurred at the time of the shock. The
+coefficient for 2006 in the event study was positive, but the combined test of the pre-event trend
+(i.e., that the coefficients for both 2003 and 2006 were equal to zero) was not rejected ($F = 2.60$,
+$p = 0.12$). To rule out the out-migration confound, I used the same HonestDiD test as in the main
+results. The results show that when $\bar M = 1$, the robust confidence interval for the relative
+magnitude of the average post-earthquake effect is $[-0.07, 0.12]$. Therefore, even if I allow for a
+parallel-trend violation after the earthquake that is as large as the worst-case scenario before the
+earthquake, the unskilled population in the more severely affected areas would decline by no more than
+approximately 7 percent per unit of MMI. This figure is far insufficient to account for the level of
+unskilled wage increases mentioned in Section~\ref{sec:mechanism}. At the same time, the data in
+Table~\ref{tab:casen} indicate that the unskilled labor force actually increased slightly after the
+earthquake, and its share of the total population remained unchanged. Therefore, an out-migration effect
+can be ruled out. Furthermore, the slight decline in the total population ($-0.009$ per unit of MMI) is
+attributable not to the unskilled labor force but to the skilled labor force. At the same time, wages for
+the skilled labor force did not change significantly despite the decline in the size of this group. The
+mechanisms underlying this phenomenon are beyond the scope of this paper and may thus serve as a topic
+for future discussion and research. This conclusion still has some data-related limitations: the CASEN
+survey is conducted infrequently, and the small number of clusters (13 regions in the harmonized CASEN
+scheme) may limit the precision of the estimates.
+
+\input{tables/tab_casen}
+
+\begin{figure}[htbp]\centering
+  \includegraphics[width=0.75\linewidth]{../output/figs/E12_casen_migration.png}
+  \caption{CASEN: regional population by skill versus earthquake exposure. A fall in the unskilled
+  population in harder-hit regions would indicate out-migration; the coefficient is instead near zero.}
+  \label{fig:casen}
+\end{figure}
+
+\FloatBarrier
+\section{Sensitivity to Parallel Trends}\label{sec:honest}
+
+The identification in this paper relies on the parallel-trend assumption, namely, that after controlling
+for region-specific trends, the growth trends of various variables (investment, output, employment,
+wages/skill premiums, etc.) in regions with high MMI and low MMI are parallel. If the pre-shock
+coefficients in the regression model are approximately equal to zero and statistically insignificant,
+then the pre-shock parallel-trend assumption holds. However, I found that not all pre-earthquake
+coefficients were equal to zero. To address this issue, I employed the sensitivity analysis method
+proposed by \citet{rambachanroth2023} to assess the core empirical conclusion of this paper, namely, to
+what extent the investment spike in 2014, resulting from post-earthquake reconstruction, depends on the
+assumption of prevailing trends. This method moves beyond the original binary classification of
+``parallel'' versus ``non-parallel'' to determine the extent to which the pre-earthquake trend can
+deviate from parallelism while the 2014 effect remains statistically significant. I applied this
+approach to the raw event-study estimates, summarizing the results in Table~\ref{tab:honestdid} and
+Figure~\ref{fig:honest}.
+
+There are two natural ways to impose constraints here. The smoothness constraint $\Delta^{SD}(M)$ limits
+the change in the slope of the divergence trend in each period to no more than $M$, meaning that the
+trend line is not allowed to turn sharply and can only change gradually. When $M=0$, the trend is forced
+to be a straight line, which is entirely consistent with the linear detrending process I described
+earlier. The relative magnitude constraint $\Delta^{RM}(\bar M)$, on the other hand, uses the actual
+deviations observed before the earthquake as a baseline and limits the magnitude of deviations from the
+post-earthquake parallel trend to within $\bar M$ times the maximum pre-earthquake deviation. The
+advantage of this approach is that it is not affected by the uneven distribution of years caused by the
+exclusion of the 2012 wave. These two constraints operate from the perspectives of ``how sharply the
+trend can turn'' and ``how large the post-earthquake deviation is relative to the pre-earthquake value,''
+respectively. I apply both simultaneously to ensure robustness.
+
+Under the linear-trend benchmark $\Delta^{SD}(0)$, the robust confidence sets for the investment
+coefficient and the unskilled wage coefficient in 2014 both exclude zero ($[0.28, 0.75]$ and
+$[0.19, 0.80]$, respectively), consistent with the estimates preferred in this paper. However, these
+conclusions are fragile in the face of larger deviations: the breakdown values for both results are
+approximately $\bar M \approx 0.5$, which is lower than the commonly used benchmark of $\bar M = 1$
+(under which post-earthquake violations as large as the most severe pre-earthquake violations are
+permitted, at which point both confidence sets include zero).
+
+I also used another, more refined estimation method to assess robustness. Since locally smoothed trends
+vary approximately linearly between adjacent years, the difference $\beta_{2014} - \tfrac12(\beta_{2013}
++ \beta_{2015})$ can account for such a trend, thereby isolating any ``spikes'' in a single year.
+However, this does not help in this case (Table~\ref{tab:honestdid}, last row): the difference itself is
+not significant because the effect is a multi-year upward shift between 2013 and 2015, rather than a spike
+in a single year; thus, subtracting 2014 from its adjacent years removes the signal along with the trend.
+Combined with standard linear and quadratic trend specifications (Table~\ref{tab:main_did}, Panels B--C,
+under which the investment effect barely survives), I believe the data support the following conclusion:
+as long as deviations from the parallel trend are mild and smooth, the findings regarding the
+reconstruction of the investment pulse and the constancy of unskilled wages are solid. However, once
+deviations become too large, these findings become fragile.
+
+\input{tables/tab_honestdid}
+
+\begin{figure}[htbp]\centering
+  \includegraphics[width=0.95\linewidth]{../output/figs/E11_honestdid.png}
+  \caption{HonestDiD sensitivity \citep{rambachanroth2023} of the 2014 coefficients to
+  relative-magnitude violations of parallel trends. The robust 95\% confidence set widens with
+  $\bar M$; it excludes zero only for $\bar M$ below about 0.5.}
+  \label{fig:honest}
+\end{figure}
+
+\FloatBarrier
+\section{Discussion}\label{sec:discussion}
+
+\textbf{Post-earthquake reconstruction focused primarily on replacing the damaged capital rather than
+rebuilding to the original level of development.} Investment increased to rebuild and replace capital,
+but there were no changes in output, employment, the allocation of key factors, or wages in any robust
+sense. Under these circumstances, the marginal returns to capital and labor returned to pre-earthquake
+levels, so neither the prices nor the quantities of these two factors changed significantly. At the same
+time, I found that when simulating a counterfactual path in which the earthquake shock did not occur, the
+actual level of development remains below that of the counterfactual path. This is consistent with the
+findings of \citet{diaz2024}, namely that investment offsets the damage rather than building upon the
+original foundation. Furthermore, because investment is not aimed at development, its impact on the labor
+force and income distribution is minimal.
+
+\textbf{Alternative explanations.} Theoretically, several other mechanisms could also explain the findings
+of this paper. (a)~\emph{Nominal and real wages.} The data used in this paper are based on nominal wages,
+so inflation during the reconstruction period may have led me to overestimate changes in unskilled or
+skilled wages. However, the skill premium differences out common inflation, so the skill-premium
+conclusion is not affected by inflation. (b)~\emph{Insurance and reconstruction transfer payments.} Public
+reconstruction spending and insurance payouts boosted consumption and purchasing power in severely
+affected areas, leading to increased demand for local goods and services. This may account for part of
+the change in local demand, but it does not invalidate my regression results. (c)~\emph{Survivorship
+bias.} If larger establishments were more likely to survive the earthquake, while smaller ones were more
+likely to disappear and thus not be included in post-earthquake statistics, then the post-earthquake data
+would be skewed toward surviving establishments. However, Table~\ref{tab:main_did} shows that the change
+in the number of establishments is zero and not statistically significant. (d)~\emph{Output demand for
+construction materials.} Reconstruction increases the construction industry's demand for building
+materials such as lumber, cement, and metals. However, wage increases were concentrated in the food
+industry, the sector least associated with reconstruction. The specific reason for wage increases in the
+food industry is not the focus of this paper but may serve as a new research idea for the future.
+
+\textbf{2014 tax reform.} In 2014, the Chilean government enacted a new corporate tax policy (Law 20,780),
+which could have led to front-loading---that is, companies rushing to make investments before the tax
+reform officially took effect, resulting in a peak in investment in 2014. Moreover, such front-loading was
+more likely to occur in disaster-stricken areas where businesses were already more concentrated. However,
+the paper has ruled out this possibility on two grounds. First, the assets that establishments would
+front-load are those that can be purchased in advance, such as machinery. Therefore, if a 2014 investment
+peak were indeed caused by anticipatory front-loading, that peak should have been dominated by equipment.
+However, the findings in Table~\ref{tab:mechanism} show that the investment peak was dominated by
+structures, which establishments cannot purchase in advance. Second, no further spikes should have
+occurred after the tax reform was implemented, so the investment peak should have subsided in 2014.
+However, my data show that the investment peak persisted into 2015. Therefore, I believe that the 2014 tax
+reform was not the primary cause of the investment peak and does not affect the findings of this paper.
+
+\textbf{Spillover effects.} In this paper, the severely affected areas with high MMI are treated as the
+treatment group, while the lightly affected areas with low MMI are treated as the control group. However,
+the lightly affected areas were not entirely unaffected. Post-earthquake reconstruction requires large
+quantities of cement, lumber, steel, and workers, all of which are likely to be transferred from the
+lightly affected areas to the severely affected areas. In other words, because the lightly affected areas
+are supplying materials to the severely affected areas, manufacturing demand rises, pulling up output and
+investment, which narrows the gap between the treatment group and the control group, and causes $\beta$ to
+underestimate the true effect. At the same time, the transfer of labor from the lightly affected areas to
+the severely affected areas reduces employment in the former, widening the gap between the control group
+and the treatment group, and that causes $\beta$ to overestimate the true effect.
+
+I test for the spillover directly with a spatial-lag-of-treatment (SLX) specification, adding a second
+treatment term, $\text{Post} \times \text{MMI}$ for a region's immediate geographic neighbors, to the
+incidence regressions. Table~\ref{tab:spillover} reports the result, and the result is that the spillover
+cannot be signed with this design. Because Chile is long from north to south but very narrow from east to
+west, its geography is almost linear, with the various regions essentially lined up end-to-end.
+Therefore, a region's own shaking and its neighbors' shaking are nearly collinear ($r \approx 0.98$), so
+the own- and neighbor-exposure terms are not separately identified. The investment neighbor coefficient is
+0.51 with a standard error above one, $p = 0.64$, and the output own-coefficient inflates from a precise
+null of 0.11 to 1.06 while a mechanically ``significant'' neighbor term of $-0.97$ appears with the
+opposite sign. This means the standard errors explode and the augmented own-coefficients become unstable.
+Therefore, the sign of the spillover is ambiguous.
+
+\input{tables/tab_spillover}
+
+\textbf{Limitations.} (i) Since 2008, the establishment identifiers in the ENIA data have changed
+annually, making it impossible for me to identify the same establishment across different years.
+Consequently, I am unable to construct an establishment panel and can only aggregate the data into cells
+organized by ``industry $\times$ region $\times$ year.'' Therefore, based on the available data, I cannot
+distinguish whether the effects I identify stem from internal adjustments within a specific establishment
+or from overall changes in the industry average. (ii) ENIA applies multiplicative confidentiality noise,
+which increases the variance. To address this, I performed a bootstrap analysis. (iii) Wages for unskilled
+workers rose during the post-earthquake reconstruction period, while wages for skilled workers remained
+largely unchanged. The specific mechanism behind this phenomenon has not yet been elucidated. Only two
+mechanisms have been ruled out: the local construction industry development mechanism mentioned in
+Section~\ref{sec:mechanism} and the out-migration effect of unskilled labor mentioned in
+Section~\ref{sec:migration}. Further possible mechanisms remain to be explored in future research.
+(iv) Regardless of the type of publicly available data, none of it covers the working hours of individual
+workers. Therefore, the analysis of the labor force in this paper is limited to the single dimension of
+``number of workers.''
+
+\FloatBarrier
+\section{Conclusion}\label{sec:conclusion}
+
+I used the 2010 Maule earthquake in Chile as an exogenous shock to examine its impact on Chilean
+manufacturing and how the sector adjusted during post-disaster reconstruction. The results show that
+regions most severely affected by the disaster experienced a temporary spike in investment, peaking in
+2014. At the same time, there were no significant changes in output, employment, labor productivity, the
+labor share of output, or the profit proxy. The rise in wages for unskilled workers was the only labor
+market change observed, but the mechanism behind it remains unclear. Furthermore, this paper points out
+that post-earthquake reconstruction merely restored the capital destroyed by the earthquake, rather than
+building upon the existing foundation. Therefore, the post-earthquake investment peak represents
+``reconstruction'' rather than ``labor reallocation.''
+
+\clearpage
+\begin{thebibliography}{99}
+\bibitem[Aksoy et al.(2024)]{aksoy2024} Aksoy, C.~G., Chupilkin, M., Koczan, Z., \& Plekhanov, A.
+(2024). Unearthing the economic and social consequences of earthquakes. \textit{IZA Discussion
+Paper No.\ 17108}.
+\bibitem[B\'arcena et al.(2010)]{barcena2010} B\'arcena, A., Prado, A., L\'opez, L., \& Samaniego, J. (2010). \textit{The Chilean
+Earthquake of 27 February 2010: An Overview}. Santiago: Economic Commission for Latin America and
+the Caribbean (ECLAC).
+\bibitem[Belasen \& Polachek(2009)]{belasen2009} Belasen, A.~R., \& Polachek, S.~W. (2009). How
+disasters affect local labor markets: The effects of hurricanes in Florida. \textit{Journal of
+Human Resources}, 44(1), 251--276. \doi{10.3368/jhr.44.1.251}
+\bibitem[Benguria(2022)]{benguria2022} Benguria Garibaldi, S. (2022). Shaky growth: Chile's
+earthquake and its effect on GDP. Master's thesis, Stockholm School of Economics.
+\bibitem[Cameron et al.(2008)]{cameron2008} Cameron, A.~C., Gelbach, J.~B., \& Miller, D.~L.
+(2008). Bootstrap-based improvements for inference with clustered errors. \textit{Review of
+Economics and Statistics}, 90(3), 414--427. \doi{10.1162/rest.90.3.414}
+\bibitem[D\'iaz et al.(2024)]{diaz2024} D\'iaz, D., Paniagua, P., \& Larroulet, C. (2024).
+Earthquakes and the wealth of nations: The cases of Chile and New Zealand. \textit{Working
+paper}, arXiv:2405.12041.
+\bibitem[Fuest et al.(2018)]{fuest2018} Fuest, C., Peichl, A., \& Siegloch, S. (2018). Do
+higher corporate taxes reduce wages? \textit{American Economic Review}, 108(2), 393--418.
+\doi{10.1257/aer.20130570}
+\bibitem[Government of Chile(2010)]{govchile2010} Government of Chile. (2010). \textit{Plan de
+Reconstrucci\'on Chile Unido Reconstruye Mejor} [A United Chile Rebuilds Better: National Reconstruction Plan]. Santiago: Gobierno de Chile.
+\bibitem[Krusell et al.(2000)]{krusell2000} Krusell, P., Ohanian, L.~E., R\'ios-Rull, J.-V.,
+\& Violante, G.~L. (2000). Capital-skill complementarity and inequality.
+\textit{Econometrica}, 68(5), 1029--1053. \doi{10.1111/1468-0262.00150}
+\bibitem[Lewis(2011)]{lewis2011} Lewis, E. (2011). Immigration, skill mix, and capital-skill
+complementarity. \textit{Quarterly Journal of Economics}, 126(2), 1029--1069.
+\doi{10.1093/qje/qjr011}
+\bibitem[Notowidigdo(2020)]{notowidigdo2020} Notowidigdo, M.~J. (2020). The incidence of local
+labor demand shocks. \textit{Journal of Labor Economics}, 38(3), 687--725.
+\doi{10.1086/706048}
+\bibitem[Rambachan \& Roth(2023)]{rambachanroth2023} Rambachan, A., \& Roth, J. (2023). A more
+credible approach to parallel trends. \textit{Review of Economic Studies}, 90(5), 2555--2591.
+\doi{10.1093/restud/rdad018}
+\bibitem[Roth(2022)]{roth2022} Roth, J. (2022). Pretest with caution: Event-study estimates
+after testing for parallel trends. \textit{American Economic Review: Insights}, 4(3), 305--322.
+\doi{10.1257/aeri.20210236}
+\bibitem[Su\'arez Serrato \& Zidar(2016)]{suarezzidar2016} Su\'arez Serrato, J.~C., \& Zidar,
+O. (2016). Who benefits from state corporate tax cuts? \textit{American Economic Review},
+106(9), 2582--2624. \doi{10.1257/aer.20141702}
+\bibitem[U.S. Geological Survey(2010)]{usgs2011} U.S. Geological Survey. (2010). \textit{M 8.8 ---
+offshore Bio-Bio, Chile (27 February 2010): Earthquake summary and ShakeMap} (Event ID us2010tfan). Reston, VA: USGS. Retrieved from \url{https://earthquake.usgs.gov/earthquakes/eventpage/us2010tfan}.
+\end{thebibliography}
+
+\clearpage
+\FloatBarrier
+\appendix
+\section{Data construction}\label{app:data}
+
+\subsection{Raw ENIA files and sample window}
+This paper is based on data from the Annual National Industrial Survey (\textit{Encuesta Nacional
+Industrial Anual}, ENIA) collected by the Chilean National Institute of Statistics (INE). The raw data are
+collected annually and are divided into three parts: Part 1 records the establishment identifier and
+classification information (region, industry, and size); Part 2 records the economic accounts, namely
+gross output, fixed-asset acquisitions (investment) by asset class, the wage bill, and taxes; and Part 3
+records the detailed labor variables, namely total employment and wages by occupational category. The
+main outcome variables in this paper come from Part 2 (investment, gross output, the wage bill, and the
+corporate income tax used as a profit proxy); Part 3 provides employment together with the skilled and
+unskilled wages behind the skill premium; and Part 1 provides the region and industry codes used to define
+the cells.
+
+I first convert each annual database into a single wide-format establishment-level file. The specific
+processing steps are: standardizing the establishment identifier, removing duplicate IDs, decoding numeric
+fields that were exported as byte strings in 2009, and merging the three parts through an outer join on the
+establishment identifier. The working sample covers the years 2003--2017, excluding 2012 because the
+establishment response rate to the questionnaire was markedly lower than in other years.
+
+The data used in this paper span two different file regimes. Files prior to 2008 use stable establishment
+identifiers and follow the ISIC Rev.\ 3 industry classification. The publicly available FUSION files from
+2008 onward use annual identifiers that are not consistent across years; I therefore do not construct an
+establishment-level panel for the period after 2007. Instead, all regressions use repeated cross-sections
+composed of ``2-digit industry $\times$ region $\times$ year'' cells.
+
+\subsection{Industry harmonization}
+The industrial classification standard is not the same across all years. The files I recovered from before
+2013 are coded in ISIC Rev.\ 3 (or Rev.\ 3.1), while the later files use ISIC Rev.\ 4. I therefore map the
+pre-2013 codes to Rev.\ 4 using the official United Nations concordance table. When one Rev.\ 3 code
+corresponds to more than one Rev.\ 4 code, I split the establishment across those Rev.\ 4 industries using
+activity-share weights, so that no establishment is double-counted. All of the analysis is then carried out
+at the 2-digit Rev.\ 4 level. As in Section~\ref{sec:data}, I restrict the main sample to food products
+(10), wood products (16), and basic metals (24), because these three industries appear in both high- and
+low-intensity regions and therefore support the within-industry, across-region comparison. I use the full
+2-digit manufacturing sample as a robustness check.
+
+\subsection{Cell aggregation and outcome construction}
+I aggregate the establishment-level data into cells defined by 2-digit industry, region, and year. Let $i$
+index establishments in industry $j$, region $r$, and year $t$, and let $w_i$ be the activity-share weight
+from the industry harmonization. For total outcomes, such as investment, employment, output, and the
+effective number of establishments, I take the weighted cell sum:
+\[ Y^{\mathrm{sum}}_{jrt} = \sum_{i \in (j,r,t)} w_i\, y_i. \]
+For wage outcomes, I instead take the weighted mean over establishments with positive, non-missing wages:
+\[ Y^{\mathrm{mean}}_{jrt} = \frac{\sum_{i \in (j,r,t)} w_i\, y_i}{\sum_{i \in (j,r,t)} w_i}. \]
+I then use the log of the positive cell values as the regression outcomes, except for the skill premium,
+which I define as the log skilled wage minus the log unskilled wage.
+
+Table~\ref{tab:varconstruction} lists the main variables and their source fields. The most important
+construction issue is investment. Through 2014, purchases of new capital goods are reported in the
+\texttt{CBN*} fields; from the 2015 form redesign onward, the same items are reported under \texttt{CB*}
+fields. I treat this as a field rename rather than a stop in reporting, and I combine the two series into
+one. Any national rescaling or form-level break in 2015 is common to an industry-year and is absorbed by
+the industry $\times$ year fixed effects.
+
+\begin{table}[htbp]\centering
+\caption{Variable construction and source fields}
+\label{tab:varconstruction}
+\begin{threeparttable}
+\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{0.21\linewidth}p{0.42\linewidth}p{0.27\linewidth}}
+\toprule
+Concept & ENIA source fields & Cell construction \\
+\midrule
+Effective establishments & Harmonized establishment weights & Weighted sum of $w_i$ \\
+Gross investment & \texttt{CBNTER}, \texttt{CBNEDI}, \texttt{CBNMAQ}, \texttt{CBNVEH},
+\texttt{CBNMUE}, \texttt{CBNSOF}; from 2015: \texttt{CBTER}, \texttt{CBEDI}, \texttt{CBMAQ},
+\texttt{CBVEH}, \texttt{CBSOF} & Weighted cell sum of capital-good purchases \\
+Structures & Land and buildings fields, mainly \texttt{CBNTER}, \texttt{CBNEDI} (old schema) and
+\texttt{CBTER}, \texttt{CBEDI} (new schema) & Weighted cell sum \\
+Machinery & \texttt{CBNMAQ} and \texttt{CBMAQ} & Weighted cell sum \\
+Equipment & Machinery, vehicles, and software fields & Weighted cell sum \\
+Employment & \texttt{EMPTOT}; for years without \texttt{EMPTOT}, fallback
+\texttt{TOTHOM}+\texttt{TOTMUJ} & Weighted cell sum \\
+Gross output & \texttt{VBP}; \texttt{VBPb}/\texttt{VBPB} renamed to \texttt{VBP} where needed &
+Weighted cell sum \\
+Production wage & \texttt{REGPRDI} & Weighted positive cell mean \\
+Skilled wage & \texttt{REGTESP} (technicians/specialists) & Weighted positive cell mean \\
+Unskilled wage & \texttt{REGNOCALD} (\emph{no calificado}) & Weighted positive cell mean \\
+Skill premium & \texttt{REGTESP} and \texttt{REGNOCALD} & $\log(\text{skilled})-\log(\text{unskilled})$ \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]\footnotesize
+\item \textit{Notes.} Field names refer to the harmonized wide ENIA files created from the annual raw
+databases. The table reports the variables used in the main analysis; additional asset subclasses and
+robustness variables are built in the same way.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\subsection{Earthquake intensity}
+I measure earthquake exposure with the USGS ShakeMap for the February 27, 2010 Maule earthquake. I overlay
+the ShakeMap MMI polygons on the GADM 4.1 administrative-region polygons, after reprojecting both layers to
+a planar equal-area coordinate system so that the areas are computed correctly. Each region's intensity is
+the area-weighted mean MMI:
+\[ \text{MMI}_r = \frac{\sum_{g \in r} \text{MMI}_g \cdot \text{area}_{gr}}{\sum_{g \in r} \text{area}_{gr}}, \]
+where $g$ indexes the ShakeMap polygons that intersect region $r$. For regions outside the felt area of the
+earthquake, I assign a floor value of 2.0, which corresponds to weak or essentially unfelt shaking, so that
+they serve as low-intensity controls rather than being dropped. To keep the region coding consistent across
+the ENIA sample, I use the historical fifteen-region structure, so \~Nuble is still counted as part of
+B\'io-B\'io.
+
+\subsection{Detrending, weights, and inference}
+The main threat to identification is that the hardest-hit central regions were already growing faster before
+the earthquake. To deal with this, I estimate each region's linear trend using only the pre-earthquake years
+(2003, 2004, 2005, 2006, 2007, 2008, and 2009), and I project this trend forward. I then run the event-study
+and mechanism regressions on the deviations from this pre-period-projected path. I do not estimate the trend
+on the whole sample, because that would let the post-earthquake reconstruction pulse affect the counterfactual
+slope and pull the treatment effect toward zero.
+
+I weight the regressions by cell effective size, clipping the cell weight at one for numerical stability, and
+I cluster the standard errors by region. Because there are only fifteen region clusters, I read the
+cluster-robust asymptotic standard errors cautiously, and for the headline investment pulse, the 2014
+unskilled-wage response, and the equipment-accumulation check I also report restricted wild cluster bootstrap
+$p$-values with Rademacher weights.
+
+Finally, ENIA applies multiplicative confidentiality noise to the establishment records. This noise inflates
+the variance of establishment-level measures, especially investment, but it does not create a systematic
+difference-in-differences bias in expectation, as long as the perturbation is not correlated with earthquake
+intensity conditional on the fixed effects. All of the tables and figures in the paper are produced by the
+replication scripts, which go from the raw annual databases through extraction, harmonization, cell
+construction, intensity merging, estimation, and table and figure generation.
+
+\end{document}

@@ -1,0 +1,56 @@
+# ============================================================================
+# This is a CODE-ONLY repository. No microdata, derived data, or GIS layers.
+# ============================================================================
+
+# --- data directories (never publish) ---
+data/
+raw/
+geodata/
+output/
+archive/
+refs/
+
+# --- raw databases and any data-like files ---
+*.accdb
+*.mdb
+*.parquet
+*.dta
+*.sav
+*.csv
+*.tif
+*.tiff
+*.shp
+*.shx
+*.dbf
+*.prj
+*.gpkg
+*.geojson
+
+# keep the small ISIC concordance weights (a genuine input, not microdata)
+!crosswalks/*.csv
+
+# --- manuscript drafts kept out of the repo ---
+*.docx
+
+# --- LaTeX build artifacts and generated tables ---
+paper/tables/
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+*.synctex.gz
+
+# --- OS / editor / language cruft ---
+.DS_Store
+.Rhistory
+.Rproj.user
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+.venv/
+venv/

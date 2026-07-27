@@ -1,0 +1,20 @@
+# Python 3.11+
+# Install with:  pip install -r requirements.txt
+
+pandas
+numpy
+statsmodels
+pyarrow            # parquet I/O for the cell panels
+matplotlib
+geopandas          # GIS overlay of ShakeMap intensity on region boundaries
+shapely            # geometry backend for geopandas
+
+# reading the raw ENIA Access databases (code/01_extract_accdb.py).
+# access_parser is a pure-Python .accdb/.mdb reader -- no system mdbtools needed.
+access_parser
+
+# Rambachan-Roth (2023) HonestDiD sensitivity analysis (code/24_honestdid.py)
+honestdid
+
+# The R and Stata replications (code/r, code/stata) have their own dependencies,
+# listed in code/README.md (R: fixest; Stata: reghdfe, ftools, boottest).
