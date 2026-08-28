@@ -48,11 +48,9 @@ Chile. \quad \textbf{JEL:} J23, J31, Q54, O14, R11.
 \section{Introduction}\label{sec:intro}
 
 In the early hours of February 27, 2010, the 8.8-magnitude Maule earthquake struck Chile. It was
-the sixth-largest earthquake in recorded history and the second strongest in Chile's history
-\citep{barcena2010}. More than 100 aftershocks with magnitudes of 5.0 or higher followed. Over
+the sixth-largest earthquake in recorded history and the second strongest in Chile's history. More than 100 aftershocks with magnitudes of 5.0 or higher followed. Over
 1.8 million people were affected, infrastructure across the country suffered severe damage, and
-economic losses reached \$30 billion, accounting for approximately 18\% of Chile's GDP
-\citep{barcena2010}. The three hardest-hit regions, Maule, B\'io-B\'io, and O'Higgins, constitute
+economic losses reached \$30 billion, accounting for approximately 18\% of Chile's GDP. The three hardest-hit regions, Maule, B\'io-B\'io, and O'Higgins, constitute
 the heartland of Chile's manufacturing sector. Together, these regions account for more than a
 quarter of Chile's manufacturing output, spanning industries such as food processing, beverages,
 steel, paper, shipbuilding, and oil refining, while also contributing approximately half of the
@@ -61,9 +59,9 @@ synthetic control methods, economic activity in the Maule Region declined by app
 compared to a counterfactual scenario in the three years following the earthquake
 \citep{diaz2024}. Figure~\ref{fig:map} shows the distribution of seismic intensity.
 
-As can be seen, this earthquake was plausibly exogenous to the industrial and labor markets; it
+As can be seen, this earthquake was plausibly exogenous to the industrial and labor markets. It
 had a massive impact, and the intensity of ground shaking it generated attenuated with distance
-from the epicenter and varied with local soil conditions. Therefore, after controlling for fixed
+from the epicenter and varied with local soil conditions \citep{wald1999,waldallen2007}. Therefore, after controlling for fixed
 effects, the intensity of shaking is plausibly uncorrelated with a region's pre-existing
 manufacturing and labor-market trends. I can thus attempt to answer the following question: How
 does a labor market adjust when an economy suddenly loses a large amount of physical capital
@@ -78,7 +76,7 @@ To test whether this theory applies to this earthquake disaster, I aggregate est
 data into industry $\times$ region $\times$ year cells and construct a difference-in-differences
 specification with an interaction term between the time indicator variable (post-2010) and
 continuous regional MMI values. The industry $\times$ region fixed effects capture the
-time-invariant characteristics of each cell, including MMI levels; the industry $\times$ year
+time-invariant characteristics of each cell, including MMI levels. The industry $\times$ year
 fixed effects capture any nationwide industry-specific shocks, such as changes in copper prices,
 global demand for processed foods, and the national business cycle. Thus, I compare establishments
 across regions within the same industry and year that were affected by the earthquake to varying
@@ -114,9 +112,9 @@ over into the labor market.
 
 \textbf{(3) The expected ``capital-skill complementarity'' theory has not been confirmed.} If
 reconstructed capital and skilled labor were complementary, the post-disaster skill premium should
-have risen; however, this pattern did not materialize following the Chilean earthquake. Yet my aim
+have risen. However, this pattern did not materialize following the Chilean earthquake. Yet my aim
 is not to refute this theory, as the available data and the reduced-form regression I employ do not
-solely examine the impact of equipment on the skill premium; they also account for the effects of
+solely examine the impact of equipment on the skill premium. They also account for the effects of
 variables such as structures, labor, and output---all of which were similarly affected by the
 earthquake---on the skill premium. Furthermore, the wage evidence is not sufficiently robust. I
 find a weak and imprecise upward trend in unskilled wages following the disaster. A candidate
@@ -148,12 +146,12 @@ how changes in local labor demand affect skill groups differently. I adopt a sim
 with fundamental differences from previous studies, which also lead to different results. The
 shocks in this paper involve physical destruction, such as damage to factory machinery, buildings,
 and infrastructure, rather than changes in tax rates or the cost of capital. Furthermore, I find
-that the physical destruction caused by earthquakes is rarely passed on to workers; even when it
+that the physical destruction caused by earthquakes is rarely passed on to workers. Even when it
 is, the pass-through is not significant.
 
 Third, this paper provides an empirical case study of ``capital-skill complementarity.'' The
 capital-skill complementarity theory proposed by \citet{krusell2000} emphasizes that capital
-equipment increases the relative demand for skilled labor; meanwhile, \citet{lewis2011} argues that
+equipment increases the relative demand for skilled labor. Meanwhile, \citet{lewis2011} argues that
 the local labor supply, in turn, shapes an establishment's choice of equipment. The Chilean
 earthquake provides an empirical case: in the aftermath of the disaster, local manufacturers
 increased investment in equipment to restore the economy, yet the skill premium did not rise.
@@ -163,17 +161,17 @@ case.
 
 Finally, this paper draws on the pre-trends approach of \citet{roth2022} to address the issue that
 the hardest-hit regions already experienced faster investment growth prior to the disaster.
-Section~\ref{sec:framework} presents the concepts and theories discussed in this paper;
-Section~\ref{sec:data} introduces the data; Section~\ref{sec:strategy} outlines the empirical
-strategy; Sections~\ref{sec:results}--\ref{sec:mechanism} present the results and mechanisms;
+Section~\ref{sec:framework} presents the concepts and theories discussed in this paper.
+Section~\ref{sec:data} introduces the data. Section~\ref{sec:strategy} outlines the empirical
+strategy. Sections~\ref{sec:results}--\ref{sec:mechanism} present the results and mechanisms.
 Sections~\ref{sec:migration}--\ref{sec:honest} demonstrate the exclusion of the out-migration
-channel and the treatment of parallel trends; Section~\ref{sec:discussion} discusses the effects
-and external validity; and Section~\ref{sec:conclusion} concludes the paper.
+channel and the treatment of parallel trends. Section~\ref{sec:discussion} discusses the effects
+and external validity. Section~\ref{sec:conclusion} concludes the paper.
 
 \begin{figure}[htbp]\centering
   \includegraphics[width=0.5\linewidth]{../output/figs/E2_chile_mmi_map_zoom.png}
-  \caption{Ground-shaking intensity (MMI) of the 2010 Maule earthquake by region; the red star
-  marks the offshore epicenter. Central regions were severely shaken; the far north and south
+  \caption{Ground-shaking intensity (MMI) of the 2010 Maule earthquake by region. The red star
+  marks the offshore epicenter. Central regions were severely shaken. The far north and south
   were essentially unaffected.}
   \label{fig:map}
 \end{figure}
@@ -645,6 +643,20 @@ materials such as lumber, cement, and metals. However, wage increases were conce
 industry, the sector least associated with reconstruction. The specific reason for wage increases in the
 food industry is not the focus of this paper but may serve as a new research idea for the future.
 
+\textbf{Soil-correlated agricultural shocks.} A more subtle concern is that shaking intensity is
+correlated with soft alluvial soil, and the alluvial and volcanic soils of Chile's Central Valley
+are also highly fertile \citep{casanova2013}, so a regional agricultural boom around 2014 could
+have raised demand for food-related manufacturing and mimicked the reconstruction pulse. Because
+such a shock varies at the region-by-year level, it is not absorbed by the industry $\times$ year
+fixed effects and it survives linear detrending, so I test it directly. In CASEN, neither the
+agricultural employment share nor the agricultural wage responds to Post $\times$ MMI ($+0.003$,
+$p=0.41$, and $+0.014$, $p=0.58$), and agricultural employment, although it rises, drifts up
+monotonically through 2017 rather than peaking in 2014. In ENIA, food-sector investment reproduces
+the aggregate pulse, rising to $+0.67$ in 2014 and $+0.71$ in 2015 before reverting, whereas
+food-sector output shows no significant 2014 break ($+0.18$, $p=0.30$). Since a genuine
+demand-driven agricultural boom would raise farm wages and food output and would share the pulse's
+peak-and-revert timing, the data do not support this channel.
+
 \textbf{2014 tax reform.} In 2014, the Chilean government enacted a new corporate tax policy (Law 20,780),
 which could have led to front-loading---that is, companies rushing to make investments before the tax
 reform officially took effect, resulting in a peak in investment in 2014. Moreover, such front-loading was
@@ -728,6 +740,9 @@ earthquake and its effect on GDP. Master's thesis, Stockholm School of Economics
 \bibitem[Cameron et al.(2008)]{cameron2008} Cameron, A.~C., Gelbach, J.~B., \& Miller, D.~L.
 (2008). Bootstrap-based improvements for inference with clustered errors. \textit{Review of
 Economics and Statistics}, 90(3), 414--427. \doi{10.1162/rest.90.3.414}
+\bibitem[Casanova et al.(2013)]{casanova2013} Casanova, M., Salazar, O., Seguel, O., \& Luzio, W.
+(2013). \textit{The Soils of Chile}. World Soils Book Series. Dordrecht: Springer.
+\doi{10.1007/978-94-007-5949-7}
 \bibitem[D\'iaz et al.(2024)]{diaz2024} D\'iaz, D., Paniagua, P., \& Larroulet, C. (2024).
 Earthquakes and the wealth of nations: The cases of Chile and New Zealand. \textit{Working
 paper}, arXiv:2405.12041.
@@ -756,6 +771,13 @@ O. (2016). Who benefits from state corporate tax cuts? \textit{American Economic
 106(9), 2582--2624. \doi{10.1257/aer.20141702}
 \bibitem[U.S. Geological Survey(2010)]{usgs2011} U.S. Geological Survey. (2010). \textit{M 8.8 ---
 offshore Bio-Bio, Chile (27 February 2010): Earthquake summary and ShakeMap} (Event ID us2010tfan). Reston, VA: USGS. Retrieved from \url{https://earthquake.usgs.gov/earthquakes/eventpage/us2010tfan}.
+\bibitem[Wald \& Allen(2007)]{waldallen2007} Wald, D.~J., \& Allen, T.~I. (2007). Topographic
+slope as a proxy for seismic site conditions and amplification. \textit{Bulletin of the
+Seismological Society of America}, 97(5), 1379--1395. \doi{10.1785/0120060267}
+\bibitem[Wald et al.(1999)]{wald1999} Wald, D.~J., Quitoriano, V., Heaton, T.~H., Kanamori, H.,
+Scrivner, C.~W., \& Worden, C.~B. (1999). TriNet ``ShakeMaps'': Rapid generation of peak ground
+motion and intensity maps for earthquakes in southern California. \textit{Earthquake Spectra},
+15(3), 537--555. \doi{10.1193/1.1586057}
 \end{thebibliography}
 
 \clearpage
