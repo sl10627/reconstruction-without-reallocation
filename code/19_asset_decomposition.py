@@ -79,7 +79,7 @@ def build_cell():
                      **{name: wsum(g[name], w) for name in ASSETS}})
     cell = pd.DataFrame(rows)
     shake = pd.read_csv(DATA / "shakemap_by_region.csv").rename(columns={"enia_region": "REGION"})
-    cell = cell.merge(shake[["REGION", "mean_mmi"]], on="REGION", how="left")
+    cell = cell.merge(shake[["REGION", "mean_mmi"]], on="REGION", how="left", validate="m:1")
     cell["mean_mmi"] = cell["mean_mmi"].fillna(MMI_FLOOR)
     cell["year_c"] = cell["ANIO"] - 2009
     cell["jr"] = cell["ind2"] + "_r" + cell["REGION"].astype(str)

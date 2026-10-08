@@ -1,20 +1,23 @@
-# Python 3.11+
+# Python 3.11+ (the published results were produced with Python 3.13.9)
 # Install with:  pip install -r requirements.txt
+# Versions are the ones used to produce the paper; nearby versions should work.
 
-pandas
-numpy
-statsmodels
-pyarrow            # parquet I/O for the cell panels
-matplotlib
-geopandas          # GIS overlay of ShakeMap intensity on region boundaries
-shapely            # geometry backend for geopandas
+pandas==2.3.3
+numpy==2.3.5
+scipy==1.16.3
+statsmodels==0.14.5
+pyarrow==21.0.0          # parquet I/O for the cell panels
+matplotlib==3.10.6
+geopandas==1.1.3         # GIS overlay of ShakeMap intensity on region boundaries
+shapely==2.1.2           # geometry backend for geopandas
 
 # reading the raw ENIA Access databases (code/01_extract_accdb.py).
 # access_parser is a pure-Python .accdb/.mdb reader -- no system mdbtools needed.
-access_parser
+access_parser==0.0.6
 
 # Rambachan-Roth (2023) HonestDiD sensitivity analysis (code/24_honestdid.py)
-honestdid
+honestdid==0.1.1
 
 # The R and Stata replications (code/r, code/stata) have their own dependencies,
-# listed in code/README.md (R: fixest; Stata: reghdfe, ftools, boottest).
+# listed in code/README.md (R 4.6.0 with fixest 0.14.2; Stata 15+ with reghdfe,
+# ftools and boottest).

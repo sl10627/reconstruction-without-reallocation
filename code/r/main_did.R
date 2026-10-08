@@ -139,5 +139,24 @@ for (b in seq_len(B)) {
 cat(sprintf("\n  wild cluster bootstrap (B=999, Rademacher, restricted): t=%.2f, p = %.3f\n",
             t_hat, (1 + cnt) / (B + 1)))
 
-cat("\nExpected (Python pipeline): (1) +0.517  (2) +0.168  (3) +0.712  (4) +0.579  WCB p~0.027\n")
-cat("(bootstrap p varies slightly with the RNG draws across implementations)\n")
+p_wcb <- (1 + cnt) / (B + 1)
+
+# ---- compare with the Python estimates (data/python_benchmarks.csv, written by
+# code/34_export_analysis_cell.py). Point estimates and the bootstrap t must agree
+# to 1e-4; the bootstrap p-value depends on the random draws, so it only has to be
+# within 0.02 of Python's.
+bm <- read.csv(file.path(ROOT, "data", "python_benchmarks.csv"))
+py <- setNames(bm$value, bm$name)
+r_est <- c(did_no_trend = unname(coef(m_none)["post_mmi"]),
+           did_linear_trend = unname(coef(m_lin)["post_mmi"]),
+           es_raw_2014 = unname(b2014_raw),
+           es_pretrend_2014 = unname(b2014),
+           es_pretrend_2015 = unname(b2015),
+           wcb_t_2014 = unname(t_hat))
+cmp <- data.frame(estimate = names(r_est), R = round(r_est, 4),
+                  Python = round(py[names(r_est)], 4), diff = signif(r_est - py[names(r_est)], 2))
+cat("\nR vs Python:\n"); print(cmp, row.names = FALSE)
+cat(sprintf("  wild bootstrap p: R %.3f, Python %.3f\n", p_wcb, py["wcb_p_2014"]))
+stopifnot(all(abs(r_est - py[names(r_est)]) < 1e-4),
+          abs(p_wcb - py["wcb_p_2014"]) < 0.02)
+cat("OK: R reproduces the Python estimates.\n")

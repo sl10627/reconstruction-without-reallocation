@@ -88,7 +88,7 @@ def build():
     cells = pd.concat([_cells_from(d[["REGION", "year", "unskilled", "skilled", "in_lf", "w"]]),
                        _cells_from(d03)], ignore_index=True)
     cells["unsk_share"] = cells["pop_unsk"] / cells["pop_total"]
-    cells = cells.merge(mmi_13region(), on="REGION", how="left")
+    cells = cells.merge(mmi_13region(), on="REGION", how="left", validate="m:1")
     cells["mean_mmi"] = cells["mean_mmi"].fillna(MMI_FLOOR)
     cells["post"] = (cells["year"] >= 2010).astype(int)   # same convention as ENIA
     cells["post_mmi"] = cells["post"] * cells["mean_mmi"]

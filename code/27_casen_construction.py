@@ -56,7 +56,7 @@ def build():
             "constr_wage": (cw["wage"] * cw["w"]).sum() / cw["w"].sum() if len(cw) else np.nan,
         })
     cell = pd.DataFrame(rows)
-    cell = cell.merge(mmi_13region(), on="REGION", how="left")
+    cell = cell.merge(mmi_13region(), on="REGION", how="left", validate="m:1")
     cell["mean_mmi"] = cell["mean_mmi"].fillna(MMI_FLOOR)
     cell["post"] = (cell["year"] >= 2010).astype(int)
     cell["post_mmi"] = cell["post"] * cell["mean_mmi"]

@@ -92,7 +92,7 @@ def build_cell():
     cell = pd.DataFrame(rows)
 
     shake = pd.read_csv(DATA / "shakemap_by_region.csv").rename(columns={"enia_region": "REGION"})
-    cell = cell.merge(shake[["REGION", "mean_mmi"]], on="REGION", how="left")
+    cell = cell.merge(shake[["REGION", "mean_mmi"]], on="REGION", how="left", validate="m:1")
     cell["mean_mmi"] = cell["mean_mmi"].fillna(MMI_FLOOR)
     cell["post"] = (cell["ANIO"] >= 2010).astype(int)
     cell["year_c"] = cell["ANIO"] - 2009

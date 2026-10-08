@@ -49,7 +49,7 @@ def build():
                      "wskill": wmean_pos(g["wskill"], g["w"]), "wunsk": wmean_pos(g["wunsk"], g["w"])})
     c = pd.DataFrame(rows)
     sh = pd.read_csv(DATA / "shakemap_by_region.csv").rename(columns={"enia_region": "REGION"})
-    c = c.merge(sh[["REGION", "mean_mmi"]], on="REGION", how="left")
+    c = c.merge(sh[["REGION", "mean_mmi"]], on="REGION", how="left", validate="m:1")
     c["mean_mmi"] = c["mean_mmi"].fillna(MMI_FLOOR)
     c["year_c"] = c["ANIO"] - 2009
     c["jr"] = c["ind2"] + "_r" + c["REGION"].astype(str)

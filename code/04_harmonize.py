@@ -142,7 +142,7 @@ def build_wide_year(year: int) -> dict:
         overlap = [c for c in other.columns if c in base.columns and c != "ID"]
         if overlap:
             other = other.drop(columns=overlap)
-        base = base.merge(other, on="ID", how="outer")
+        base = base.merge(other, on="ID", how="outer", validate="1:1")
 
     # add outcome-eligibility flags
     base["emp_eligible"] = year >= 2009

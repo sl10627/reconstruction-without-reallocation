@@ -153,7 +153,7 @@ def build_cell_panel() -> pd.DataFrame:
     # merge MMI
     shake = pd.read_csv(DATA / "shakemap_by_region.csv")
     shake = shake.rename(columns={"enia_region": "REGION"})[["REGION", "mean_mmi", "frac_area_mmi_ge_7"]]
-    cell = cell.merge(shake, on="REGION", how="left")
+    cell = cell.merge(shake, on="REGION", how="left", validate="m:1")
     n_missing = cell["mean_mmi"].isna().sum()
     cell["mean_mmi"] = cell["mean_mmi"].fillna(MMI_FLOOR)
     cell["frac_area_mmi_ge_7"] = cell["frac_area_mmi_ge_7"].fillna(0.0)

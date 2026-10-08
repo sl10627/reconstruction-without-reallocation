@@ -22,7 +22,8 @@ Caveat built in: with ~15 region clusters and two correlated treatment terms thi
 test is low-powered. The point is to replace a conjecture with whatever the data
 actually say -- including "imprecise / inconclusive."
 
-Output: output/spillover_test.csv
+Output: output/spillover_test.csv, output/spillover_own_nbr_corr.csv (correlation of own
+and neighbor MMI across the 15 regions, quoted in the paper as r ~ 0.98)
 """
 
 from __future__ import annotations
@@ -101,6 +102,12 @@ def build():
     print("Region  own_MMI  neighbor_MMI")
     for r in NS_CHAIN_FULL:
         print(f"  {r:2d}     {mmi_own.get(r, MMI_FLOOR):.2f}     {mmi_nbr.get(r, MMI_FLOOR):.2f}")
+    own_v = [mmi_own.get(r, MMI_FLOOR) for r in NS_CHAIN_FULL]
+    nbr_v = [mmi_nbr[r] for r in NS_CHAIN_FULL]
+    r_own_nbr = float(np.corrcoef(own_v, nbr_v)[0, 1])
+    pd.DataFrame([{"n_regions": len(NS_CHAIN_FULL), "corr_own_nbr_mmi": r_own_nbr}]).to_csv(
+        OUT / "spillover_own_nbr_corr.csv", index=False)
+    print(f"Correlation of own and neighbor MMI across {len(NS_CHAIN_FULL)} regions: {r_own_nbr:.3f}")
 
     c["mean_mmi"] = c["REGION"].map(mmi_own).fillna(MMI_FLOOR)
     c["nbr_mmi"] = c["REGION"].map(mmi_nbr).fillna(MMI_FLOOR)

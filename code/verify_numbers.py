@@ -161,6 +161,42 @@ CHECKS = [
         lambda: cell("spillover_test.csv", "beta_own_aug", outcome="Gross output")),
     ("Spillover", "output neighbor coef", -0.97, 2,
         lambda: cell("spillover_test.csv", "theta_nbr", outcome="Gross output")),
+    ("Spillover", "own vs neighbor MMI correlation (r)", 0.98, 2,
+        lambda: csv("spillover_own_nbr_corr.csv")["corr_own_nbr_mmi"].iloc[0]),
+
+    # -- soil-correlated agricultural shocks (28_agri_placebo.py) --
+    ("Agriculture", "CASEN agri employment share Post x MMI", 0.003, 3,
+        lambda: cell("agri_placebo.csv", "beta", outcome="Agri employment share")),
+    ("Agriculture", "CASEN agri employment share p-value", 0.40, 2,
+        lambda: cell("agri_placebo.csv", "p", outcome="Agri employment share")),
+    ("Agriculture", "CASEN log agri wage Post x MMI", 0.015, 3,
+        lambda: cell("agri_placebo.csv", "beta", outcome="Log agri wage")),
+    ("Agriculture", "CASEN log agri wage p-value", 0.58, 2,
+        lambda: cell("agri_placebo.csv", "p", outcome="Log agri wage")),
+    ("Agriculture", "ENIA food investment 2014", 0.67, 2,
+        lambda: cell("agri_placebo.csv", "beta", outcome="Food investment", year=2014)),
+    ("Agriculture", "ENIA food investment 2015", 0.71, 2,
+        lambda: cell("agri_placebo.csv", "beta", outcome="Food investment", year=2015)),
+    ("Agriculture", "ENIA food output 2014", 0.18, 2,
+        lambda: cell("agri_placebo.csv", "beta", outcome="Food output", year=2014)),
+    ("Agriculture", "ENIA food output 2014 p-value", 0.30, 2,
+        lambda: cell("agri_placebo.csv", "p", outcome="Food output", year=2014)),
+
+    # -- sample structure --
+    ("Data", "number of ENIA regions (clusters)", 15, 0,
+        lambda: pd.read_parquet(DATA / "enia_cell_2digit_quake.parquet")["REGION"].nunique()),
+]
+
+# Claims the paper states as bounds rather than values: (section, description, op, bound, actual_fn)
+BOUNDS = [
+    ("Event study", "investment 2014 (pre-projected) p < 0.01", "<", 0.01,
+        lambda: cell("earthquake_event_study_pretrend.csv", "p", outcome="invest", year=2014)),
+    ("Event study", "investment 2015 (pre-projected) p < 0.05", "<", 0.05,
+        lambda: cell("earthquake_event_study_pretrend.csv", "p", outcome="invest", year=2015)),
+    ("Incidence", "wage bill p < 0.05", "<", 0.05,
+        lambda: cell("incidence_did.csv", "p", outcome="Wage bill")),
+    ("Spillover", "investment neighbor SE above one", ">", 1.0,
+        lambda: cell("spillover_test.csv", "se_nbr", outcome="Investment")),
 ]
 
 
@@ -184,6 +220,15 @@ def main():
             ok, act_s = False, f"ERR: {e}"
         n_fail += not ok
         rows.append((section, desc, f"{claimed:+.{dec}f}", act_s, "ok" if ok else "MISMATCH"))
+    for section, desc, op, bound, fn in BOUNDS:
+        try:
+            actual = fn()
+            ok = actual < bound if op == "<" else actual > bound
+            act_s = f"{actual:.4f}"
+        except Exception as e:
+            ok, act_s = False, f"ERR: {e}"
+        n_fail += not ok
+        rows.append((section, desc, f"{op} {bound}", act_s, "ok" if ok else "MISMATCH"))
 
     w0 = max(len(r[0]) for r in rows)
     w1 = max(len(r[1]) for r in rows)

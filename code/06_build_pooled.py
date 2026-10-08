@@ -29,6 +29,8 @@ def load_share_weights() -> pd.DataFrame:
     sw = pd.read_csv(CROSSWALKS / "rev31_to_rev4_share_weights.csv")
     sw["rev31"] = sw["rev31"].astype(str).str.strip()
     sw["rev4"] = sw["rev4"].astype(str).str.strip()
+    # Each Rev. 3.1 code is split across its Rev. 4 codes, so its shares must sum to one.
+    assert (sw.groupby("rev31")["share"].sum() - 1).abs().max() < 1e-9
     return sw
 
 

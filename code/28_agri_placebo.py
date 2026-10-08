@@ -57,7 +57,7 @@ def casen_cells():
                      "agri_emp": a["w"].sum(),
                      "agri_share": a["w"].sum() / g["w"].sum(),
                      "agri_wage": (aw["wage"] * aw["w"]).sum() / aw["w"].sum() if len(aw) else np.nan})
-    c = pd.DataFrame(rows).merge(mmi_13region(), on="REGION", how="left")
+    c = pd.DataFrame(rows).merge(mmi_13region(), on="REGION", how="left", validate="m:1")
     c["mean_mmi"] = c["mean_mmi"].fillna(MMI_FLOOR)
     c["post"] = (c["year"] >= 2010).astype(int)
     c["post_mmi"] = c["post"] * c["mean_mmi"]

@@ -19,10 +19,11 @@ Post × MMI difference-in-differences on 2-digit industry × region × year cell
 from nineteen annual ENIA establishment databases (2003–2017), with industry ×
 region and industry × year fixed effects.
 
-**The result is a null with a pulse.** Investment rises sharply, peaking at 0.58
-log points per intensity unit in 2014. Output, employment, labor productivity,
-the labor share, and profit proxies are all indistinguishable from zero
-throughout. Capital was rebuilt; nothing was reallocated.
+**The result is a null with a pulse.** Investment rises sharply in 2014 and
+2015, by 0.58 and 0.60 log points per intensity unit, before falling back.
+Output, employment, labor productivity, the labor share, and profit proxies are
+all indistinguishable from zero throughout. Capital was rebuilt, but nothing was
+reallocated.
 
 This rejects the capital–skill complementarity prediction of Krusell, Ohanian,
 Ríos-Rull and Violante (2000) in this setting. I also rule out three competing
@@ -43,10 +44,11 @@ them.
 
 | Path | Contents |
 |---|---|
-| `code/01`–`code/31` | Python pipeline: extraction → harmonization → cell construction → GIS treatment → estimation → tables and figures |
-| `code/verify_numbers.py` | Checks every hard-coded number in the paper prose against fresh `output/*.csv` |
-| `code/r/main_did.R` | `fixest` replication of the headline regressions, with a hand-rolled wild cluster bootstrap |
-| `code/stata/main_did.do` | `reghdfe` + `boottest` replication of the same |
+| `code/run_all.py` | Runs the whole pipeline in order, from the raw databases to the tables, then checks the paper's numbers |
+| `code/01`–`code/34` | Python pipeline: extraction → harmonization → cell construction → GIS treatment → estimation → tables and figures |
+| `code/verify_numbers.py` | Checks every number quoted in the paper text against fresh `output/*.csv` |
+| `code/r/main_did.R` | `fixest` replication of the headline regressions, with a hand-rolled wild cluster bootstrap; checks itself against the Python estimates |
+| `code/stata/main_did.do` | `reghdfe` + `boottest` replication of the same, with the same check |
 | `code/README.md` | Full replication instructions, run order, and software requirements |
 | `crosswalks/` | ISIC Rev. 3.1 → Rev. 4 concordance with activity-share weights |
 | `paper/` | Manuscript source and compiled PDF |
@@ -58,8 +60,8 @@ them.
 The analysis uses the *Encuesta Nacional Industrial Anual* (ENIA), collected by
 Chile's Instituto Nacional de Estadísticas, together with CASEN household survey
 data, USGS ShakeMap intensity rasters, and GADM administrative boundaries. The
-ENIA databases are publicly available from INE but are not redistributed here;
-see `code/README.md` for how to obtain them and where the scripts expect them to
+ENIA databases are publicly available from INE but are not redistributed here.
+See `code/README.md` for how to obtain them and where the scripts expect them to
 sit.
 
 One structural note that shapes the whole design: the public FUSION files from
@@ -72,10 +74,10 @@ industry × region × year cells.
 
 ```bash
 pip install -r requirements.txt
-# place the ENIA .accdb files at the repository root, then:
-python code/01_extract_accdb.py
-# ... see code/README.md for the full run order
-python code/verify_numbers.py     # exits 0 iff every number in the paper matches the pipeline
+# place the raw inputs where code/README.md lists them, then:
+python code/run_all.py            # about 12 minutes, ends by checking every number in the paper
+Rscript code/r/main_did.R         # optional: R replication, checked against Python
+stata -b do code/stata/main_did.do  # optional: Stata replication, checked against Python
 ```
 
 `code/17_make_tables.py` writes the LaTeX tables in `paper/tables/` directly from

@@ -63,7 +63,7 @@ def build_pooled_cell(value_builder, how):
         rows.append({"ind2": i2, "REGION": int(reg), "ANIO": int(yr), "weight_sum": w.sum(), "val": agg})
     c = pd.DataFrame(rows)
     sh = pd.read_csv(DATA / "shakemap_by_region.csv").rename(columns={"enia_region": "REGION"})
-    c = c.merge(sh[["REGION", "mean_mmi"]], on="REGION", how="left")
+    c = c.merge(sh[["REGION", "mean_mmi"]], on="REGION", how="left", validate="m:1")
     c["mean_mmi"] = c["mean_mmi"].fillna(MMI_FLOOR)
     c["jr"] = c["ind2"] + "_r" + c["REGION"].astype(str)
     c["jt"] = c["ind2"] + "_t" + c["ANIO"].astype(str)

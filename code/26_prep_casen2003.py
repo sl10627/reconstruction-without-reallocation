@@ -7,6 +7,7 @@ different variable names. I map:
   activ -> in labour force (ocupado or desocupado)
   expr  -> population weight ; edad -> working age 15-64
 
+Input:  data/_casen_extract/casen2003.dta
 Output: data/casen2003_slim.parquet  (working-age persons, columns REGION, unskilled,
 skilled, in_lf, w)
 """
@@ -19,7 +20,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
-SRC = Path("/Users/lewisliu/Downloads/casen2003_extract/casen2003.dta")
+SRC = DATA / "_casen_extract" / "casen2003.dta"   # extracted from data/casen2003stata.rar
 
 ROMAN = {"i": 1, "ii": 2, "iii": 3, "iv": 4, "v": 5, "vi": 6, "vii": 7, "viii": 8,
          "ix": 9, "x": 10, "xi": 11, "xii": 12, "r.m.": 13}
